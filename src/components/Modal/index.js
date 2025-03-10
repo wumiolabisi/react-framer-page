@@ -22,7 +22,7 @@ const dropIn = {
 },
 };
 
-const Modal = ({handleClose, text}) =>{
+const Modal = ({handleClose, title, img, desc, src}) =>{
     return(
         <Backdrop onClick={handleClose}>
             <motion.div
@@ -33,7 +33,11 @@ const Modal = ({handleClose, text}) =>{
                 animate="visible"
                 exit="exit"
             >
-                <p>{text}</p>
+                <h2>{title}</h2>
+                <p>{desc}</p>
+                <a href={src}>
+                    <img src={img} alt="Illustration of video {title}" className="thumbnail"/>
+                </a>
                 <button onClick={handleClose}>Fermer</button>
             </motion.div>
         </Backdrop>

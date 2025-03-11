@@ -1,30 +1,49 @@
 @import-normalize;
-html,body{
+@import url('https://fonts.googleapis.com/css2?family=Doto:wght@100..900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+
+html,
+body {
   padding: 0;
   margin: 0;
   width: 100%;
   height: 100%;
+  font-family: "Libre Baskerville", serif;
+  font-size: 14px;
+  line-height: 20px;
+  color: #2c2c2c;
 }
-.backdrop{
-  position: absolute;
+a{
+  text-decoration: none;color:inherit;
+}
+a:hover{
+  font-weight: bolder;
+}
+h1,
+h2 {
+  font-family: "Doto", sans-serif;
+}
+
+.backdrop {
+  position: fixed;
   display: flex;
   align-items: center;
   justify-content: center;
-  top:0;
-  left:0;
+  top: 0;
+  left: 0;
   height: 100vh;
   width: 100%;
   background-color: #00000078;
   overflow: hidden;
+  z-index: 2;
 }
 
-.modal{
-  width: clamp(50%,700px,90%);
-  height:auto;
+.modal {
+  width: clamp(50%, 700px, 90%);
+  height: auto;
 
-  margin:auto;
+  margin: auto;
   padding: 0 2rem;
-  border-radius:12px;
+  border-radius: 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -33,48 +52,184 @@ html,body{
 
 }
 
-.button{
-width: 150px;
-height: 50px;
-background-color: inherit;
-border:1px solid #000000;
-color:#000000;
-cursor: pointer;
+.button {
+  width: 150px;
+  height: 50px;
+  background-color: inherit;
+  border: 2px solid #faf6ec;
+  color: #faf6ec;
+  cursor: pointer;
+font-weight: bolder;
+  text-shadow: 1px 2px 5px #000000;
 }
-
-.thumbnail{
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
-}
-
-.cards{
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-auto-rows: 400px;
-  width: 100%;
+.button:hover{
+  box-shadow: 1px 2px 10px #000000;
 
 }
-/*
-.cards section:nth-child(2){
-  grid-row:2 / 4
+.button-close {
+  width: 100px;
+  height: 30px;
+  background-color: inherit;
+  border: 1px solid #000000;
+  color: #000000;
+  cursor: pointer;
+  margin: 2% 0;
 }
-*/
-.card{
-  position: relative;
-}
-.card-thumbnail-container{
-  position: absolute;
-  left: 0;
-  top:0;
-  z-index: -2;
-  width: 100%;
-}
-.card-thumbnail-container > img.card-thumbnail{
+
+.thumbnail {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: top;
 }
 
+.thumbnail-container {
+  width:100%;
+  height: 200px;
+}
+@media screen and (min-width: 700px) {
+  .thumbnail-container {
+    width:100%;
+    height: 400px;
+  }
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 200px;
+  width: 100%;
+  gap: 5px;
+
+}
+@media screen and (min-width: 700px) {
+  .cards {
+    grid-auto-rows: 500px;
+  
+  }
+}
+.cards>section {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.cards section:nth-child(3) {
+  grid-row: 2 / 4
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+
+.card-thumbnail-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+}
+
+.card-thumbnail-container>img.card-thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: end;
+  width: 98%;
+  position: absolute;
+  bottom: 0;
+  left:0;
+  padding:0 0 2% 2%;
+  background-color: #c3c3c34a;
+  backdrop-filter: blur(4px);
+}
+
+
+.h2-title {
+  font-size: 15px;
+  font-weight: bold;
+}
+.card-content .h2-title{
+  text-shadow: 1px 2px 2px #000;
+  color:#faf6ec
+}
+
+@media screen and (min-width: 700px) {
+  .h2-title{
+    font-size: 23px;
+  }
+}
+
+h2 {
+  font-weight: bold;
+  font-size: 45px;
+  margin-left: 2%;
+}
+.modal h2 {
+  font-weight: bold;
+  font-size: 25px;
+  margin-left: 2%;
+}
+.modal p{
+  text-align: left;
+  width: 100%;
+  line-height: 150%;
+  text-align: justify;
+}
+.modal p.source{
+ font-size: 10px;
+}
+nav {
+  position: relative;
+}
+
+nav ul {
+  list-style-type: none;
+  display: flex;
+  position: fixed;
+  justify-content: start;
+  gap: 10px;
+  margin: 0 0 10px 0;
+  padding: 2% 0;
+  width: 100%;
+  background-color: #faf6ec;
+  border-bottom: 1px solid #ffe2c0;
+  z-index: 1;
+  top: 0;
+}
+nav ul li {
+  font-size: 20px;
+  font-weight: bolder;
+  padding-left:2%
+}
+.hero {
+  width: 96%;
+  height: 40vh;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  padding-left: 2%;
+  flex-direction: column;
+}
+.hero .hero-text {
+  width: 100%;
+}
+@media screen and (min-width: 900px) {
+  .hero .hero-text {
+    width: 50%;
+  }
+}
 

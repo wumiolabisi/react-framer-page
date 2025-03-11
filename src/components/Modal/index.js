@@ -25,7 +25,7 @@ const dropIn = {
 const Modal = ({handleClose, title, img, desc, src}) =>{
     return(
         <Backdrop onClick={handleClose}>
-            <motion.div
+            <motion.section
                 onClick={(e) => e.stopPropagation()}
                 className="modal orange-grandient"
                 variants={dropIn}
@@ -35,11 +35,14 @@ const Modal = ({handleClose, title, img, desc, src}) =>{
             >
                 <h2>{title}</h2>
                 <p>{desc}</p>
-                <a href={src}>
+                <p className="source">Regarder la vidéo : <a href={src} target="_blank" rel="noreferrer">{src}</a></p>
+                <picture className="thumbnail-container">
+                <a href={src} title="Lien vers la vidéo">
                     <img src={img} alt="Illustration of video {title}" className="thumbnail"/>
                 </a>
-                <button onClick={handleClose}>Fermer</button>
-            </motion.div>
+                </picture>
+                <button onClick={handleClose} className="button-close">Fermer</button>
+            </motion.section>
         </Backdrop>
     )
 };

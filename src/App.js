@@ -3,6 +3,9 @@ import { useState } from "react";
 import Modal from "./components/Modal";
 import { v4 as uuidv4 } from 'uuid';
 import videos from "./data/videos";
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+
 
 function App() {
 
@@ -18,46 +21,61 @@ function App() {
 
 
   return (
-    <div className="cards">
+    <main>
+      <header><Navbar/><Hero/></header>
+    
+    <h2>Mes projets</h2>
+    <section className="cards">
       {videos.map((video) => {
         return (
           <section key={uuidv4()} id={uuidv4()}>
-            <section className="card">
-            <picture className="card-thumbnail-container">
-              <img src={video.img} alt="Miniature de la vidéo" className="card-thumbnail"/>
-            </picture>
-            </section>
-            <header>{video.title}</header>
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              className="button"
-              onClick={() => open(video)}>
-              Voir
-            </motion.button>
-            <AnimatePresence
-              initial={false}
-              exitBeforeEnter={true}
-              onExitComplete={() => null}>
-              {modalOpen && selectedVideo && (
-                <Modal
-                  modalOpen={modalOpen}
-                  src={selectedVideo.src}
-                  title={selectedVideo.title}
-                  desc={selectedVideo.desc}
-                  img={selectedVideo.img}
-                  handleClose={close}
-                />
-              )}
+            <motion.article className="card"   
+            initial={{ opacity: 0, y: 100 }} 
+          whileInView={{ opacity: 1, y: 0 }} 
+          transition={{ duration: 0.8, ease: "easeOut" }} 
+          viewport={{ once: true, amount: 0.2 }} 
+        >
+              <picture className="card-thumbnail-container">
+                <img src={video.img} alt="Miniature de la vidéo" className="card-thumbnail" />
+              </picture>
+            </motion.article>
+            <article className="card-content">
+              <header>
+                <p className="h2-title">{video.title}</p>
+              </header>
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="button"
+                onClick={() => open(video)}>
+                Voir
+              </motion.button>
+            </article>
 
-            </AnimatePresence>
+
           </section>
         );
       })}
 
+      <AnimatePresence
+        initial={false}
+        exitBeforeEnter={true}
+        onExitComplete={() => null}>
+        {modalOpen && selectedVideo && (
+          <Modal
+            modalOpen={modalOpen}
+            src={selectedVideo.src}
+            title={selectedVideo.title}
+            desc={selectedVideo.desc}
+            img={selectedVideo.img}
+            handleClose={close}
+          />
+        )}
 
+      </AnimatePresence>
 
-    </div>
+    </section>
+    </main>
   );
 }
 

@@ -10,7 +10,7 @@ const videos = [
   {
      title:"Film Kroskel - Collection AH 2025",
      desc:"Ce court-métrage promotionnel met en avant la nouvelle collection automne-hiver 2025 de Kroskel à travers un storytelling immersif. J’ai géré l’intégralité du montage, de l’assemblage des séquences à l’habillage graphique, en passant par l’étalonnage et la correction colorimétrique pour sublimer l’univers visuel de la marque.",
-     img:"film-kroskel-2025.JPG",
+     img:"film-kroskel-2025-min.JPG",
      src:"https://www.youtube.com/watch?v=QfJ2HLXMBlA&ab_channel=KROSKEL",
     teaser:""
    },

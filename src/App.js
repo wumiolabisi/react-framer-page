@@ -4,7 +4,7 @@ import Modal from "./components/Modal";
 import { v4 as uuidv4 } from 'uuid';
 import videos from "./data/videos";
 import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
+import Video from "./components/Video";
 
 
 function App() {
@@ -22,59 +22,65 @@ function App() {
 
   return (
     <main>
-      <header><Navbar/><Hero/></header>
-    
-    <h2>Mes projets</h2>
-    <section className="cards">
-      {videos.map((video) => {
-        return (
-          <section key={uuidv4()} id={uuidv4()}>
-            <motion.article className="card"   
-            initial={{ opacity: 0, y: 100 }} 
-          whileInView={{ opacity: 1, y: 0 }} 
-          transition={{ duration: 0.8, ease: "easeOut" }} 
-          viewport={{ once: true, amount: 0.2 }} 
-        >
-              <picture className="card-thumbnail-container">
-                <img src={video.img} alt="Miniature de la vidéo" className="card-thumbnail" />
-              </picture>
-            </motion.article>
-            <article className="card-content">
-              <header>
-                <p className="h2-title">{video.title}</p>
-              </header>
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                className="button"
-                onClick={() => open(video)}>
-                Voir
-              </motion.button>
-            </article>
+      <header>
+        <Navbar />
+        <h1>Mes montages</h1>
+        </header>
+
+      
+      <section className="cards">
+        {videos.map((video) => {
+
+          return (
+            <section key={uuidv4()} id={uuidv4()}>
+              <motion.article className="card"
+                initial={{ opacity: 0, y: 100 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                viewport={{ once: true, amount: 0.2 }}
+              >
+                <picture className="card-thumbnail-container">
+                  {(video.teaser).length === 0 ?
+                  (<img src={video.img} alt="Miniature de la vidéo" className="card-thumbnail" />) :
+                  (<Video url={video.teaser} playing={true} loop={true} muted={true} controls={false} className="video-teaser"/>)}
+                </picture>
+              </motion.article>
+              <article className="card-content">
+                <header>
+                  <p className="h2-title">{video.title}</p>
+                </header>
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="button"
+                  onClick={() => open(video)}>
+                  Voir
+                </motion.button>
+              </article>
 
 
-          </section>
-        );
-      })}
+            </section>
+          );
+        })}
 
-      <AnimatePresence
-        initial={false}
-        exitBeforeEnter={true}
-        onExitComplete={() => null}>
-        {modalOpen && selectedVideo && (
-          <Modal
-            modalOpen={modalOpen}
-            src={selectedVideo.src}
-            title={selectedVideo.title}
-            desc={selectedVideo.desc}
-            img={selectedVideo.img}
-            handleClose={close}
-          />
-        )}
+        <AnimatePresence
+          initial={false}
+          exitBeforeEnter={true}
+          onExitComplete={() => null}>
+          {modalOpen && selectedVideo && (
+            <Modal
+              modalOpen={modalOpen}
+              src={selectedVideo.src}
+              title={selectedVideo.title}
+              desc={selectedVideo.desc}
+              img={selectedVideo.img}
+              handleClose={close}
+            />
+          )}
 
-      </AnimatePresence>
+        </AnimatePresence>
 
-    </section>
+      </section>
     </main>
   );
 }

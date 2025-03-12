@@ -10,17 +10,23 @@ body {
   font-family: "Libre Baskerville", serif;
   font-size: 14px;
   line-height: 20px;
+  background-color: #faf6ec;
   color: #2c2c2c;
 }
-a{
-  text-decoration: none;color:inherit;
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
-a:hover{
+
+a:hover {
   font-weight: bolder;
 }
+
 h1,
 h2 {
   font-family: "Doto", sans-serif;
+  line-height: 120%;
 }
 
 .backdrop {
@@ -40,7 +46,7 @@ h2 {
 .modal {
   width: clamp(50%, 700px, 90%);
   height: auto;
-
+  overflow: scroll;
   margin: auto;
   padding: 0 2rem;
   border-radius: 12px;
@@ -59,13 +65,15 @@ h2 {
   border: 2px solid #faf6ec;
   color: #faf6ec;
   cursor: pointer;
-font-weight: bolder;
+  font-weight: bolder;
   text-shadow: 1px 2px 5px #000000;
 }
-.button:hover{
+
+.button:hover {
   box-shadow: 1px 2px 10px #000000;
 
 }
+
 .button-close {
   width: 100px;
   height: 30px;
@@ -84,12 +92,13 @@ font-weight: bolder;
 }
 
 .thumbnail-container {
-  width:100%;
+  width: 100%;
   height: 200px;
 }
+
 @media screen and (min-width: 700px) {
   .thumbnail-container {
-    width:100%;
+    width: 100%;
     height: 400px;
   }
 }
@@ -102,12 +111,14 @@ font-weight: bolder;
   gap: 5px;
 
 }
+
 @media screen and (min-width: 700px) {
   .cards {
     grid-auto-rows: 500px;
-  
+
   }
 }
+
 .cards>section {
   overflow: hidden;
   width: 100%;
@@ -117,6 +128,11 @@ font-weight: bolder;
 
 .cards section:nth-child(3) {
   grid-row: 2 / 4
+}
+
+.cards section:nth-child(8) {
+  grid-row: 3 / 5;
+  grid-column: 2 / 3;
 }
 
 .card {
@@ -130,7 +146,7 @@ font-weight: bolder;
   position: absolute;
   left: 0;
   top: 0;
-  z-index: -2;
+  z-index: 0;
   width: 100%;
   height: 100%;
 }
@@ -151,24 +167,26 @@ font-weight: bolder;
   width: 98%;
   position: absolute;
   bottom: 0;
-  left:0;
-  padding:0 0 2% 2%;
-  background-color: #c3c3c34a;
-  backdrop-filter: blur(4px);
+  left: 0;
+  padding: 0 0 2% 2%;
+  /*background-color: #c3c3c34a;
+  backdrop-filter: blur(4px);*/
 }
 
 
 .h2-title {
   font-size: 15px;
   font-weight: bold;
+  line-height: 150%;
 }
-.card-content .h2-title{
+
+.card-content .h2-title {
   text-shadow: 1px 2px 2px #000;
-  color:#faf6ec
+  color: #faf6ec
 }
 
 @media screen and (min-width: 700px) {
-  .h2-title{
+  .h2-title {
     font-size: 23px;
   }
 }
@@ -178,20 +196,24 @@ h2 {
   font-size: 45px;
   margin-left: 2%;
 }
+
 .modal h2 {
   font-weight: bold;
   font-size: 25px;
   margin-left: 2%;
 }
-.modal p{
+
+.modal p {
   text-align: left;
   width: 100%;
   line-height: 150%;
-  text-align: justify;
+  text-align: left;
 }
-.modal p.source{
- font-size: 10px;
+
+.modal p.source {
+  font-size: 10px;
 }
+
 nav {
   position: relative;
 }
@@ -210,26 +232,50 @@ nav ul {
   z-index: 1;
   top: 0;
 }
+header> h1{
+  margin: 10rem 0 2rem 2rem;
+  font-size: 40px;
+}
 nav ul li {
   font-size: 20px;
   font-weight: bolder;
-  padding-left:2%
-}
+  padding-left: 2%;
+ }
+ li.infos{
+  font-size: 13px;
+  font-weight: normal;
+ }
+
 .hero {
   width: 96%;
-  height: 40vh;
+  height: 30vh;
   display: flex;
   justify-content: center;
   align-items: start;
   padding-left: 2%;
   flex-direction: column;
 }
+
 .hero .hero-text {
   width: 100%;
 }
+
 @media screen and (min-width: 900px) {
   .hero .hero-text {
     width: 50%;
   }
 }
 
+.video-teaser{
+  width: 100%;
+  height: 100%;
+
+}
+.video-container {
+  width: 100%;
+  height: 100%;
+  min-height: 200px;
+}
+.video-container > div video{
+    object-fit: cover;
+}

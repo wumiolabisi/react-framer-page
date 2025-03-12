@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import Backdrop from "../Backdrop";
+import Video from "../Video";
 
 const dropIn = {
     hidden:{
@@ -34,13 +35,18 @@ const Modal = ({handleClose, title, img, desc, src}) =>{
                 exit="exit"
             >
                 <h2>{title}</h2>
+                <p><strong>Description du projet</strong></p>
                 <p>{desc}</p>
-                <p className="source">Regarder la vidéo : <a href={src} target="_blank" rel="noreferrer">{src}</a></p>
                 <picture className="thumbnail-container">
-                <a href={src} title="Lien vers la vidéo">
-                    <img src={img} alt="Illustration of video {title}" className="thumbnail"/>
-                </a>
+                
+                    { src.includes("youtube.") || src.includes("soundcloud.") ? (<Video url={src}/>) : (
+                        <a href={src} title="Lien vers la source du projet">
+                            <img src={img} alt="Illustration of video {title}" className="thumbnail"/>
+                            </a>)}
+               
                 </picture>
+                    <p className="source">Regarder à la source : <a href={src} target="_blank" rel="noreferrer">{src}</a></p>
+
                 <button onClick={handleClose} className="button-close">Fermer</button>
             </motion.section>
         </Backdrop>
